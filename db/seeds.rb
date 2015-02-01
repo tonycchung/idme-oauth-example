@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+10.times do |x|
+  price = x + 10.99
+  name = Faker::Commerce.product_name
+  price = Faker::Commerce.price
+  Product.create(name: name, price: price)
+end

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'faker'
 gem 'acts_as_shopping_cart'
 gem 'foundation-rails'
 gem 'figaro'
