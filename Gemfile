@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
+gem 'figaro'
 gem "omniauth"
 gem "omniauth-idme"
 gem 'puma'
@@ -45,4 +47,7 @@ group :development, :test do
   gem 'spring'
 end
 
-ruby '2.0.0'
+group :test do
+  gem 'minitest-rails'
+  gem 'minitest-rails-capybara'
+end
