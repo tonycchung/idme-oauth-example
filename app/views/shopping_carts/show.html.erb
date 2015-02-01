@@ -5,22 +5,39 @@
     <tr>
       <th>Name</th>
       <th>Price</th>
-      <th colspan="3"></th>
+      <th>Quantity</th>
+      <th>Total</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @shopping_cart.shopping_cart_items.each do |shopping_cart_item| %>
+    <% @shopping_cart.shopping_cart_items.sort.each do |item| %>
       <tr>
-        <td><%= shopping_cart_item.item.name %></td>
-        <td><%= shopping_cart_item.item.price %></td>
+        <td><%= item.item.name %></td>
+        <td><%= number_to_currency item.item.price %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency (item.quantity * item.item.price) %></td>
+        <td><%= link_to 'Remove from cart', shopping_cart_path(:product_id => item.item_id), :method => 'DELETE' %></td>
       </tr>
     <% end %>
+    <tr></tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><b>SubTotal:</b></td>
+      <td><%= number_to_currency @shopping_cart.subtotal %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><b>Taxes:</b></td>
+      <td><%= number_to_currency @shopping_cart.taxes %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><b>Total:</b></td>
+      <td><%= number_to_currency @shopping_cart.total %></td>
+    </tr>
   </tbody>
 </table>
-<br />
-<div>
-  <div><b>SubTotal:</b><%= number_to_currency @shopping_cart.subtotal %></div>
-  <div><b>Taxes:</b><%= number_to_currency @shopping_cart.taxes %></div>
-  <div><b>Total:</b><%= number_to_currency @shopping_cart.total %></div>
-</div>

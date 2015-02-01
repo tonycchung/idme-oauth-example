@@ -23,15 +23,15 @@
         <!-- Right Nav Section -->
         <ul class="right">
           <li class="divider"></li>
+          <li class="name">
+            <%= link_to "Products", products_path %>
+          </li>
+          <li class="divider"></li>
             <li>
             <%= link_to "My Cart", shopping_cart_path %>
           </li>
           <li class="divider"></li>
           <% if current_user.present? %>
-            <li>
-              <a href="">Signed in as <%= current_user.email %></a>
-            </li>
-            <li class="divider"></li>
             <li>
               <%= link_to "Sign out", signout_path %>
             </li>
@@ -48,6 +48,12 @@
       <div data-alert class="alert-box success radius">
         <%= flash[:notice] %>
         <a href="#" class="close">&times;</a>
+      </div>
+    <% end %>
+
+    <% if current_user.present? %>
+      <div class="right">
+        <h4>Signed in as <%= current_user.email %></h4>
       </div>
     <% end %>
 
