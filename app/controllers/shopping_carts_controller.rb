@@ -1,7 +1,7 @@
 class ShoppingCartsController < ApplicationController
-  before_filter :extract_shopping_cart
 
   def create
+    @shopping_cart = current_cart
     @product = Product.find(params[:product_id])
     @shopping_cart.add(@product, @product.price)
     flash[:notice] = "Added #{@product.name} to your cart!"
@@ -9,12 +9,7 @@ class ShoppingCartsController < ApplicationController
   end
 
   def show
+    @shopping_cart = current_cart
   end
 
-  private
-  def extract_shopping_cart
-    shopping_cart_id = session[:shopping_cart_id]
-    @shopping_cart = session[:shopping_cart_id] ? ShoppingCart.find(shopping_cart_id) : ShoppingCart.create
-    session[:shopping_cart_id] = @shopping_cart.id
-  end
 end

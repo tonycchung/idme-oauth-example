@@ -10,4 +10,14 @@ private
     rescue ActiveRecord::RecordNotFound
   end
   helper_method :current_user
+
+  def current_cart
+    if session[:cart_id]
+      @current_cart ||= ShoppingCart.find(session[:cart_id])
+    else
+      @current_cart = ShoppingCart.create!
+      session[:cart_id] = @current_cart.id
+    end
+    @current_cart
+  end
 end

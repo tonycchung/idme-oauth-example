@@ -1,7 +1,23 @@
 <h1>Shopping Cart</h1>
 
-<%= render :partial => 'shopping_cart_item', :collection => @shopping_cart.shopping_cart_items %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% @shopping_cart.shopping_cart_items.each do |shopping_cart_item| %>
+      <tr>
+        <td><%= shopping_cart_item.item.name %></td>
+        <td><%= shopping_cart_item.item.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <br />
 <div>
   <div><b>SubTotal:</b><%= number_to_currency @shopping_cart.subtotal %></div>

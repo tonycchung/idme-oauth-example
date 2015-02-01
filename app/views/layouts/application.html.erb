@@ -15,20 +15,22 @@
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="#">Shop with ID.me</a></h1>
+          <h1><%= link_to "Shop with ID.me", products_path %></h1>
         </li>
       </ul>
 
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
-          <% if current_user.present? %>
-            <!-- Divider -->
-            <li class="divider"></li>
+          <li class="divider"></li>
             <li>
-              <a href="#">Signed in as <%= current_user.email %></a>
+            <%= link_to "My Cart", shopping_cart_path %>
+          </li>
+          <li class="divider"></li>
+          <% if current_user.present? %>
+            <li>
+              <a href="">Signed in as <%= current_user.email %></a>
             </li>
-            <!-- Divider -->
             <li class="divider"></li>
             <li>
               <%= link_to "Sign out", signout_path %>
