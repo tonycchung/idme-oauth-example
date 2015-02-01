@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>IdMe</title>
+  <title>Shop with ID.me</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,7 +10,7 @@
   <div>
     <% if current_user.present? %>
       Signed in as <%= current_user.email %>
-      <%= link_to "Sign out", sign_out_path %>
+      <%= link_to "Sign out", signout_path %>
     <% else %>
       <%= link_to "Sign in with ID.me", "/auth/idme" %>
     <% end %>
