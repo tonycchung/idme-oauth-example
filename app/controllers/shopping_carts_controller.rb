@@ -10,10 +10,6 @@ class ShoppingCartsController < ApplicationController
   def show
   end
 
-  def clear_cart
-    @shopping_cart.clear
-  end
-
   def destroy
     @product = Product.find(params[:product_id])
     @shopping_cart.remove(@product, 1)
@@ -23,6 +19,8 @@ class ShoppingCartsController < ApplicationController
 
 private
   def set_shopping_cart
-    @shopping_cart = current_cart
+    shopping_cart_id = session[:shopping_cart_id]
+    @shopping_cart = session[:shopping_cart_id] ? ShoppingCart.find(shopping_cart_id) : ShoppingCart.create
+    session[:shopping_cart_id] = @shopping_cart.id
   end
 end

@@ -51,6 +51,13 @@
       </div>
     <% end %>
 
+    <% if @payload %>
+      <div data-alert class="alert-box info radius">
+        <%= "This is your payload (JSON response object): #{@payload}" %>
+        <a href="#" class="close">&times;</a>
+      </div>
+    <% end %>
+
     <% if current_user.present? %>
       <div class="right">
         <h4>Signed in as <%= current_user.email %></h4>

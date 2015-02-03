@@ -5,7 +5,6 @@
     <tr>
       <th>Name</th>
       <th>Price</th>
-      <th>Quantity</th>
       <th></th>
     </tr>
   </thead>
@@ -14,8 +13,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.price %></td>
-        <td><%= number_field('quantity', nil) %>
+        <td class="right"><%= number_to_currency product.price %></td>
         <td><%= link_to 'Add to cart', shopping_cart_path(:product_id => product), :method => 'POST' %></td>
       </tr>
     <% end %>

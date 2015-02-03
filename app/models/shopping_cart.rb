@@ -1,24 +1,11 @@
 class ShoppingCart < ActiveRecord::Base
   acts_as_shopping_cart
 
+  def self.subtotal
+    super * 0.8
+  end
 
-  # Override with your own tax calculation
-  #
-  # def taxes
-  #   subtotal * 8.3
-  # end
-  #
-  # Or...
-  #
-  # Override this one with a percentage
-  # def tax_pct
-  #   15.34
-  # end
-
-  #
-  # Override with shipping cost calculation
-  #
-  # def shipping_cost
-  #   5
-  # end
+  def self.total
+    super * 0.8
+  end
 end
