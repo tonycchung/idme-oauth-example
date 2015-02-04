@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.1'
 
 gem 'faker'
 gem 'acts_as_shopping_cart'
