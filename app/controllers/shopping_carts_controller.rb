@@ -20,8 +20,12 @@ class ShoppingCartsController < ApplicationController
 
 private
   def set_shopping_cart
-    shopping_cart_id = session[:shopping_cart_id]
-    @shopping_cart = session[:shopping_cart_id] ? ShoppingCart.find(shopping_cart_id) : ShoppingCart.create
-    session[:shopping_cart_id] = @shopping_cart.id
+    if session[:shopping_cart_id]
+      @shopping_cart ||= ShoppingCart.find(session[:shopping_cart_id])
+    else
+      @shopping_cart = ShoppingCart.create!
+    end
+    session[:shopping_cart_id] ||= @shopping_cart.id
+    @shopping_cart
   end
 end
