@@ -10,9 +10,13 @@ class ShoppingCart < ActiveRecord::Base
   end
 
   def veteran_discount(user)
-    if user.affiliation == 'Veteran'
+    if user && user.affiliation == 'Veteran'
       def total
         super * 0.8
+      end
+    else
+      def total
+        super
       end
     end
   end

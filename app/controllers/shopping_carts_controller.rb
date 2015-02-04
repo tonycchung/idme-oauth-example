@@ -8,7 +8,7 @@ class ShoppingCartsController < ApplicationController
   end
 
   def show
-    @shopping_cart.veteran_discount(current_user) if current_user.present?
+    @shopping_cart.veteran_discount(current_user)
   end
 
   def destroy

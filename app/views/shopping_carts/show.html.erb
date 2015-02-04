@@ -14,11 +14,21 @@
   <tbody>
     <% @shopping_cart.shopping_cart_items.sort.each do |cart_item| %>
       <tr>
-        <td><%= cart_item.item.name %></td>
-        <td class="right"><%= number_to_currency cart_item.item.price %></td>
-        <td><%= cart_item.quantity %></td>
-        <td class="right"><%= number_to_currency (cart_item.quantity * cart_item.item.price) %></td>
-        <td><%= link_to 'Remove from cart', shopping_cart_path(:product_id => cart_item.item_id), :method => 'DELETE' %></td>
+        <td>
+          <%= cart_item.item.name %>
+        </td>
+        <td class="right">
+          <%= number_to_currency cart_item.item.price %>
+        </td>
+        <td>
+          <%= cart_item.quantity %>
+        </td>
+        <td class="right">
+          <%= number_to_currency (cart_item.quantity * cart_item.item.price) %>
+        </td>
+        <td>
+          <%= link_to 'Remove from cart', shopping_cart_path(:product_id => cart_item.item_id), :method => 'DELETE' %>
+        </td>
       </tr>
     <% end %>
     <tr></tr>
