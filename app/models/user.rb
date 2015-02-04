@@ -5,6 +5,5 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.email = auth.extra.raw.email
       user.affiliation = auth.info.affiliation
-    end
   end
 end
