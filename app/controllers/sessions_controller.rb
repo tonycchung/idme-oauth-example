@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(request.env["omniauth.auth"])
-    @payload = request.env["omniauth.auth"].to_hash
+    @payload = request.env["omniauth.auth"].extra.raw.to_hash
     session[:user_id] = user.id
-    flash[:notice] = "#{@payload}"
+    flash[:notice] = "Signed in successfully! This is your JSON response payload: #{@payload}"
     redirect_to root_url
   end
 

@@ -7,6 +7,7 @@
       <th>Price</th>
       <th>Quantity</th>
       <th>Total</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -14,9 +15,9 @@
     <% @shopping_cart.shopping_cart_items.sort.each do |cart_item| %>
       <tr>
         <td><%= cart_item.item.name %></td>
-        <td><%= number_to_currency cart_item.item.price %></td>
+        <td class="right"><%= number_to_currency cart_item.item.price %></td>
         <td><%= cart_item.quantity %></td>
-        <td><%= number_to_currency (cart_item.quantity * cart_item.item.price) %></td>
+        <td class="right"><%= number_to_currency (cart_item.quantity * cart_item.item.price) %></td>
         <td><%= link_to 'Remove from cart', shopping_cart_path(:product_id => cart_item.item_id), :method => 'DELETE' %></td>
       </tr>
     <% end %>
@@ -30,8 +31,14 @@
     <tr>
       <td></td>
       <td></td>
-      <td><b>Taxes:</b></td>
-      <td><%= number_to_currency @shopping_cart.taxes %></td>
+      <td><b>Discount:</b></td>
+      <td>
+        <% if current_user %>
+          <%= @shopping_cart.veteran_discount_percent(current_user) %>
+        <% else %>
+          N/A
+        <% end %>
+      </td>
     </tr>
     <tr>
       <td></td>

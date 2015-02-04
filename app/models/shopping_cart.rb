@@ -1,11 +1,19 @@
 class ShoppingCart < ActiveRecord::Base
   acts_as_shopping_cart
 
-  def self.subtotal
-    super * 0.8
+  def taxes
+    0
   end
 
-  def self.total
-    super * 0.8
+  def veteran_discount_percent(user)
+    "20%" if user.affiliation == 'Veteran'
+  end
+
+  def veteran_discount(user)
+    if user.affiliation == 'Veteran'
+      def total
+        super * 0.8
+      end
+    end
   end
 end
